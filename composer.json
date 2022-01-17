@@ -1,0 +1,25 @@
+{
+    "name": "myframeworkphp/ludovic",
+    "description": "Création de mon framework php",
+    "authors": [
+        {
+            "name": "ludovic",
+            "email": "fontaine-ludovic@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\App\\": "src/",
+            "Framework\\Router\\": "router/",
+            "Framework\\Config\\": "config/",
+            "Framework\\Helpers\\": "helpers/"
+        }
+    },
+    "require": {
+        "twig/twig": "3.3.7"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.0",
+        "squizlabs/php_codesniffer": "^3.6"
+    }
+}
