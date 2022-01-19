@@ -1,42 +1,33 @@
 <?php
 
-use Framework\Helpers\Database;
+use Framework\Router\Router;
 use Framework\App\Controllers\HomeController;
-use Framework\Router\Route;
+use Framework\App\Controllers\PostController;
+use Framework\App\Controllers\ProductController;
+use Framework\App\Controllers\UserController;
+use Framework\Helpers\Functions;
 
 require_once "../vendor/autoload.php";
 require_once "../config/config.php";
 
 $url = $_GET["q"];
+$router = new Router($url);
 
-$db = new Database(DBNAME, DBHOST, DBUSER, DBPASS, DBCHARSET);
+$isApi = str_starts_with($url, "api");
+$isAdmin = str_starts_with($url, "admin");
 
-function registerController(string $controller)
-{
-    $class = new ReflectionClass($controller);
-    $routeAttributes = $class->getAttributes(Route::class);
-    $prefix = '';
-    if (!empty($routeAttributes)) {
-        $prefix = $routeAttributes[0]->newInstance()->getPath();
+if (!session_id()) session_start();
+
+$controllers = [
+    HomeController::class
+];
+try {
+    foreach ($controllers as $controller) {
+        Functions::registerController($router, HomeController::class);
+        Functions::registerController($router, PostController::class);
+        Functions::registerController($router, ProductController::class);
+        Functions::registerController($router, UserController::class);
     }
-    foreach ($class->getMethods() as $method) {
-        $routeAttributes = $method->getAttributes(Route::class);
-        if (empty($routeAttributes)) continue;
-        foreach ($routeAttributes as $routeAttribute) {
-            // dump($routeAttribute);
-            /** @var Route $route */
-            $route = $routeAttribute->newInstance();
-            $path = $prefix . $route->getPath();
-            $action = [new $controller, $method->getName()];
-            /**
-             * ! si url correspond a l'action du controller
-             */
-
-            // return call_user_func_array($action, []);
-        }
-    }
-    
-    // dump($attributes);
+} catch (\Throwable $th) {
+    dump($th);
 }
-
-registerController(HomeController::class);

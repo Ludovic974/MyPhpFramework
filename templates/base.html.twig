@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{settings.title}} - {% block title %}{{settings.motto}}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{settings.description}}{% endblock %}">
+    {# <link rel="stylesheet" href="{{constant("CSS")}}vendor/font-awesome/css/all.min.css"> #}
+    {% block style %}
+        <link rel="stylesheet" href="{{constant("CSS")}}style.css">
+    {% endblock %}
+</head>
+<body>
+    {% block loader %}
+        {% include "partials/preloader.html.twig" %}
+    {% endblock %}
+    {% if user.username %}
+        {% block adminError %}{% endblock %}
+    {% endif %}
+    {% block header %}
+        {% include "partials/header.html.twig" %}
+    {% endblock %}
+    <main>
+        {% block content %}{% endblock %}    
+    </main>
+    {% include "partials/footer.html.twig" %}
+    {% if user.username %}
+        {% include "partials/session.html.twig" %}
+        <script defer class="session-js" type="module" src="{{constant("JAVASCRIPT")}}session.js"></script>
+    {% endif %}
+    <script defer class="base-js" type="module" src="{{constant("JAVASCRIPT")}}base.js"></script>
+    <script defer class="public-js" type="module" src="{{constant("JAVASCRIPT")}}public.js"></script>
+    {% block customscript %}{% endblock %}
+</body>
+</html>

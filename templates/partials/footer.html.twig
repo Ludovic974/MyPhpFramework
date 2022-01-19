@@ -1,0 +1,23 @@
+{% if user %}
+    <div class="user-wrapper">
+        <div class="user-icon">
+            <img src="{{constant("ASSETS")}}vendor/IconPark/user.svg" alt="">
+        </div>
+        <div class="user-menu">
+            <ul class="user-links">
+                <li class="user-item">
+                    {# Detecter si s'utilisateur à un role permettant d'aller a l'administration #}
+                    <a href="/admin" class="user-link">Aller à l'administration</a>
+                </li>
+                <li class="user-item">
+                    <a href="/logout" class="user-link">Déconnexion</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endif %}
+<section class="footer">
+
+    <h2>Mon footer</h2>
+
+</section>
