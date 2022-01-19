@@ -9,7 +9,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Framework\\App\\": "src/",
+            "Framework\\App\\Controllers\\": "src/Controllers",
+            "Framework\\App\\Repositories\\": "src/Repositories",
+            "Framework\\App\\Interfaces\\": "src/Interfaces",
+            "Framework\\App\\Models\\": "src/Models",
             "Framework\\Router\\": "router/",
             "Framework\\Config\\": "config/",
             "Framework\\Helpers\\": "helpers/"

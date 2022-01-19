@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{settings.title}} - {% block title %}{{settings.motto}}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{settings.description}}{% endblock %}">
+    {# <link rel="stylesheet" href="{{constant("CSS")}}vendor/font-awesome/css/all.min.css"> #}
+    {% block style %}
+        <link rel="stylesheet" href="{{constant("CSS")}}admin.css">
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+        {% include "admin/partials/header.html.twig" %}
+    {% endblock %}
+    <main>
+        {% block adminError %}{% endblock %}
+        {% block content %}{% endblock %}    
+    </main>
+    <script defer class="base-js" type="module" src="{{constant("JAVASCRIPT")}}base.js"></script>
+    <script defer class="admin-js" type="module" src="{{constant("JAVASCRIPT")}}admin.js"></script>
+    {% block customscript %}{% endblock %}
+</body>
+</html>

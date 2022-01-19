@@ -1,5 +1,7 @@
 <?php
 
+use Framework\App\Controllers\Admin\AdminProductController;
+use Framework\App\Controllers\Admin\DashboardController;
 use Framework\Router\Router;
 use Framework\App\Controllers\HomeController;
 use Framework\App\Controllers\PostController;
@@ -19,14 +21,25 @@ $isAdmin = str_starts_with($url, "admin");
 if (!session_id()) session_start();
 
 $controllers = [
-    HomeController::class
+    HomeController::class,
+    PostController::class,
+    ProductController::class,
+    UserController::class
 ];
+
+if (isset($_SESSION["user"])) {
+    $AdminControllers = [
+        DashboardController::class,
+        AdminProductController::class,
+    ];
+    $controllers = array_merge($controllers, $AdminControllers);
+}
+
+dump($router);
+
 try {
     foreach ($controllers as $controller) {
-        Functions::registerController($router, HomeController::class);
-        Functions::registerController($router, PostController::class);
-        Functions::registerController($router, ProductController::class);
-        Functions::registerController($router, UserController::class);
+        Functions::registerController($router, $controller);
     }
 } catch (\Throwable $th) {
     dump($th);
