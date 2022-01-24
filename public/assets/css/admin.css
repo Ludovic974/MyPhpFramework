@@ -1,0 +1,160 @@
+@charset "UTF-8";
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+
+:root {
+  --clr-main: #123abc;
+  --clr-main__light: #234bcd;
+  --clr-main__dark: #0129ab;
+  --clr-light: #f4f4f4;
+  --clr-grey: #c1c1c1;
+  --clr-dark: #0a0a0a;
+  --base-fs: 14px;
+  --spaces-rem: 1.25rem;
+  --spaces-em: 1.25em;
+}
+
+/**
+ * <RESET>
+ */
+a, button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+input[type=file] {
+  display: none;
+}
+
+/**
+ * </RESET>
+ */
+body {
+  font-size: var(--base-fs);
+  scroll-behavior: smooth;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+header {
+  background: var(--clr-main);
+  color: var(--clr-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--spaces-em);
+}
+
+p {
+  line-height: 1.5;
+}
+
+.navbar .nav-brand {
+  padding: var(--spaces-em);
+}
+.navbar .nav-menu {
+  list-style: none;
+}
+.navbar .nav-menu .nav-item .nav-link {
+  display: block;
+  padding: var(--spaces-em);
+}
+
+main {
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+section {
+  max-width: 100%;
+  margin-inline: var(--spaces-rem);
+}
+section.full {
+  width: 100%;
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: var(--spaces-rem);
+  z-index: 1;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table th, table td {
+  border: 2px solid var(--clr-grey);
+  padding: var(--spaces-em);
+  text-align: center;
+}
+table td.actions {
+  padding: 0;
+}
+table td.actions i {
+  padding: var(--spaces-em);
+}
+
+button[class*=btn-] {
+  padding: var(--spaces-em);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  color: var(--clr-dark);
+}
+button.btn-main {
+  background-color: var(--clr-main);
+  box-shadow: 2px 2px 10px var(--clr-main__light);
+}
+button.btn-info {
+  background-color: lightblue;
+}
+button.btn-success {
+  background-color: lightgreen;
+  box-shadow: 2px 2px 10px #90ee9075;
+}
+button.btn-warning {
+  background-color: orange;
+}
+button.btn-danger {
+  background-color: red;
+}
+
+/**
+ * ! A revoir le système de grille
+ */
+.two-columns {
+  display: grid;
+  gap: var(--spaces-rem);
+  grid-template-columns: 1fr 1fr;
+}
+
+/*# sourceMappingURL=admin.css.map */

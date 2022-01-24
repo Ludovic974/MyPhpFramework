@@ -35,8 +35,6 @@ if (isset($_SESSION["user"])) {
     $controllers = array_merge($controllers, $AdminControllers);
 }
 
-dump($router);
-
 try {
     foreach ($controllers as $controller) {
         Functions::registerController($router, $controller);

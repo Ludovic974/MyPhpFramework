@@ -1,13 +1,15 @@
 <header class="header">
-    <div class="nav-brand">
-        <a href="/admin">Ludovic Fontaine</a>
-    </div>
     <nav class="navbar">
-        <li class="nav-item">
-            <a href="/admin" class="nav-link {{get.url == "admin" ? "active" : ""}}">Dashboard</a>
-        </li>
-        <li class="nav-item">
-            <a href="/admin/produits" class="nav-link {{get.url == "admin/produits" ? "active" : ""}}">Produits</a>
-        </li>
+        <div class="nav-brand">
+            <a href="/admin">Ludovic Fontaine</a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/admin" class="nav-link {{get.url == "admin" ? "active" : ""}}"><i class="fad fa-chart-line"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/produits" class="nav-link {{get.url == "admin/produits" ? "active" : ""}}"><i class="fad fa-cart-shopping"></i> Produits</a>
+            </li>
+        </ul>
     </nav>
 </header>

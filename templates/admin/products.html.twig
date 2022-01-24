@@ -2,7 +2,98 @@
 
 {% block content %}
 
-<h1>Produits</h1>
+<div class="sticky-wrapper">
+    <h1>Produits</h1>
+    <button data-product-add class="btn-success"><i class="fad fa-plus"></i>Ajouter un nouveau produit</button>
+</div>
+<section class="full">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Extrait</th>
+                <th>Prix (en €)</th>
+                <th colspan="3">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in entities %}
+                <tr data-product-id="{{product.id}}">
+                    <td>{{product.id}}</td>
+                    <td>{{product.thumbnail}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.excerpt}}</td>
+                    <td>{{product.price}}</td>
+                    <td>
+                        <button data-product-edit class="btn-info"><i class="fad fa-pen-to-square"></i></button>
+                    </td>
+                    <td>
+                        {% if product.disabled %}
+                            <button data-product-enable class="btn-success"><i class="fa-duotone fa-check"></i></button>
+                        {% else %}
+                            <button data-product-disable class="btn-warning"><i class="fa-duotone fa-ban"></i></button>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button data-product-remove class="btn-danger"><i class="fad fa-trash-can"></i></button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">Il n'y a aucun produits renseignés</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Extrait</th>
+                <th>Prix</th>
+                <th colspan="3">Actions</th>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+
+<div id="productAdd" class="modal-wrapper">
+    <div class="modal">
+        <div class="modal-title">Ajout d'un nouveau produit</div>
+        <form class="modal-form" enctype="multipart/form-data">
+            <div class="two-columns">
+                <div class="column">
+                    <div class="form-group">
+                        <input type="file" name="product_media" id="product_media" accept="image/*" required>
+                        <label for="product_media">
+                            <img src="https://via.placeholder.com/1920x1080">
+                        </label>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="form-group">
+                        <label for="product_name">Nom</label>
+                        <input type="text" name="product_name" id="product_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product_price">Prix</label>
+                        <input type="number" name="product_price" id="product_price" step="any" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="product_excerpt">Petite description</label>
+                <textarea name="product_excerpt" id="product_excerpt"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="product_content">Description</label>
+                <textarea name="product_content" id="product_content"></textarea>
+            </div>
+        </form>
+    </div>
+</div>
 
 <pre>
     {{ dump() }}

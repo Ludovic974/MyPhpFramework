@@ -38,7 +38,10 @@ class UserRepositories extends BaseRepositories
             $userNameColumn => $userName,
             "user_pass" => $userPass
         ]);
-        if (!$user) Location::redirect("/se-connecter", "?formulaire_erreur=" . UserRepositories::USERNOTFOUND);
-        return $_SESSION["user"] = $user;
+        if (!$user) {
+            Location::redirect("/se-connecter", "?formulaire_erreur=" . UserRepositories::USERNOTFOUND);
+        } else {
+            return $_SESSION["user"] = $user;
+        }
     }
 }

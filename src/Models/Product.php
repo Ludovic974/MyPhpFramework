@@ -38,6 +38,29 @@ class Product extends Model
 
     public function getPrice()
     {
-        return $this->price;
+        return number_format($this->price, 2);
+    }
+
+    public function getThumbnailId()
+    {
+        return $this->thumbnailId;
+    }
+
+    public function getDisabled()
+    {
+        return $this->disabled;
+    }
+
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    public function getThumbnail()
+    {
+        /**
+         * ! Récuperer l'image du thumbnail
+         */
+        return $this->thumbnailId;
     }
 }
