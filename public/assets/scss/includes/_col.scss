@@ -1,0 +1,68 @@
+$columns: 12;
+
+$columnsNumber: $columns + 1;
+
+[class*="col-"]{
+    &:not(:only-child){
+        padding-inline: var(--space);
+        &:first-child{
+            padding-left: 0;
+        }
+        &:last-child{
+            padding-right: 0;
+        }
+    }
+}
+
+@for $i from 1 to $columnsNumber {
+    .col-#{$i}{
+        $size: 100% * ($i / $columns);
+        flex: 0 0 #{$size};
+        width: #{$size};
+    }
+}
+
+@media screen and (max-width: 749px) {
+    
+    @for $i from 1 to $columnsNumber {
+        .col-sm-#{$i}{
+            $size: 100% * ($i / $columns);
+            flex: 0 0 #{$size};
+            width: #{$size};
+        }
+    }
+}
+
+@media screen and (min-width: 750px) {
+    
+    @for $i from 1 to $columnsNumber {
+        .col-md-#{$i}{
+            $size: 100% * ($i / $columns);
+            flex: 0 0 #{$size};
+            width: #{$size};
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    
+    @for $i from 1 to $columnsNumber {
+        .col-lg-#{$i}{
+            $size: 100% * ($i / $columns);
+            flex: 0 0 #{$size};
+            width: #{$size};
+        }
+    }
+}
+
+
+@media screen and (min-width: 1250px) {
+    
+    @for $i from 1 to $columnsNumber {
+        .col-xl-#{$i}{
+            $size: 100% * ($i / $columns);
+            flex: 0 0 #{$size};
+            width: #{$size};
+        }
+    }
+}

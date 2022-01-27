@@ -1,3 +1,13 @@
+@use "./includes/spaces";
+@use "./includes/reset";
+@use "./includes/col";
+@use "./includes/flex";
+@use "./includes/buttons";
+@use "./includes/modals";
+@use "./includes/admin/form";
+@use "./includes/admin/medias";
+@use "./includes/admin/sidebar";
+
 *, ::before, ::after{
     box-sizing: border-box;
     margin: 0;

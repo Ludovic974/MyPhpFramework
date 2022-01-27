@@ -1,0 +1,51 @@
+.flex{
+    &-row{
+        display: flex;
+        flex-direction: row;
+        &-reverse{
+            flex-direction: row-reverse;
+        }
+    }
+    &-col{
+        display: flex;
+        flex-direction: column;
+        &-reverse{
+            flex-direction: column-reverse;
+        }
+    }
+}
+
+.justify{
+    &-content{
+        &-start{
+            justify-content: flex-start;
+        }
+        &-center{
+            justify-content: center;
+        }
+        &-end{
+            justify-content: flex-end;
+        }
+    }
+}
+.align{
+    &-items{
+        &-start{
+            align-items: flex-start;
+        }
+        &-center{
+            align-items: center;
+        }
+        &-end{
+            align-items: flex-end;
+        }
+    }
+}
+
+$gapSize: 0rem;
+@for $i from 0 to 6 {
+    .gap-#{$i}{
+        gap: #{$gapSize};
+    }
+    $gapSize: $gapSize + 1;
+}

@@ -1,0 +1,62 @@
+$size: 0rem;
+@for $i from 0 to 6 {
+    .mx-#{$i}{
+        margin-inline: $size;
+    }
+    .my-#{$i}{
+        margin-block: $size;
+    }
+    .ml-#{$i}{
+        margin-left: $size;
+    }
+    .mr-#{$i}{
+        margin-right: $size;
+    }
+    .mt-#{$i}{
+        margin-top: $size;
+    }
+    .mb-#{$i}{
+        margin-bottom: $size;
+    }
+    .px-#{$i}{
+        padding-inline: $size;
+    }
+    .py-#{$i}{
+        padding-block: $size;
+    }
+    .pl-#{$i}{
+        padding-left: $size;
+    }
+    .pr-#{$i}{
+        padding-right: $size;
+    }
+    .pt-#{$i}{
+        padding-top: $size;
+    }
+    .pb-#{$i}{
+        padding-bottom: $size;
+    }
+    @if $size == 0rem {
+        $size: $size + 1;
+    }
+    $size: $size * 1.25;
+}
+
+.mx-auto{
+    margin-inline: auto;
+}
+.mx-auto{
+    margin-block: auto;
+}
+.ml-auto{
+    margin-left: auto;
+}
+.mr-auto{
+    margin-right: auto;
+}
+.mt-auto{
+    margin-top: auto;
+}
+.mb-auto{
+    margin-bottom: auto;
+}
